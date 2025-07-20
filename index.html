@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumière - Салон красоты премиум класса</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap");
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .master-card:hover .master-social {
+        opacity: 1;
+        bottom: 20px;
+      }
+
+      .master-social {
+        transition: all 0.3s ease;
+        opacity: 0;
+        bottom: -20px;
+      }
+
+      .testimonial-card {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #d4a373;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .booking-form input,
+      .booking-form select,
+      .booking-form textarea {
+        border-bottom: 1px solid #d1d5db;
+        transition: all 0.3s ease;
+      }
+
+      .booking-form input:focus,
+      .booking-form select:focus,
+      .booking-form textarea:focus {
+        border-bottom-color: #d4a373;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <a href="#" class="text-2xl font-bold text-amber-800"
+            >Lumi<span class="text-amber-600">ère</span></a
+          >
+        </div>
+
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-amber-800 focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+
+        <nav class="hidden md:flex space-x-8">
+          <a href="#home" class="nav-link text-amber-800 hover:text-amber-600"
+            >Главная</a
+          >
+          <a
+            href="#services"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Услуги</a
+          >
+          <a href="#about" class="nav-link text-amber-800 hover:text-amber-600"
+            >О нас</a
+          >
+          <a
+            href="#masters"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Мастера</a
+          >
+          <a
+            href="#testimonials"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Отзывы</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Контакты</a
+          >
+        </nav>
+
+        <div class="hidden md:block">
+          <a
+            href="#booking"
+            class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full transition duration-300"
+            >Записаться</a
+          >
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white py-4 px-4 shadow-lg"
+      >
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="nav-link text-amber-800 hover:text-amber-600"
+            >Главная</a
+          >
+          <a
+            href="#services"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Услуги</a
+          >
+          <a href="#about" class="nav-link text-amber-800 hover:text-amber-600"
+            >О нас</a
+          >
+          <a
+            href="#masters"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Мастера</a
+          >
+          <a
+            href="#testimonials"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Отзывы</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-amber-800 hover:text-amber-600"
+            >Контакты</a
+          >
+          <a
+            href="#booking"
+            class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-full text-center transition duration-300"
+            >Записаться</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero min-h-screen flex items-center justify-center text-white pt-20"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Ваша красота - наша страсть
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          Премиальный салон красоты, где каждая деталь создана для вашего
+          комфорта и совершенства
+        </p>
+        <a
+          href="#booking"
+          class="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-full text-lg font-medium transition duration-300 inline-block"
+          >Записаться онлайн</a
+        >
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-amber-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
+            Наши услуги
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Мы предлагаем полный спектр услуг для вашей красоты и ухода за собой
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-cut"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Парикмахерские услуги</h3>
+            <p class="text-gray-600 mb-4">
+              Стрижки, окрашивание, укладки, кератиновое выпрямление и многое
+              другое от наших топ-мастеров
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 1500₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-spa"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Уход за лицом</h3>
+            <p class="text-gray-600 mb-4">
+              Профессиональные уходовые процедуры, пилинги, массажи и
+              инъекционные методики
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 2500₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-hand-sparkles"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Маникюр и педикюр</h3>
+            <p class="text-gray-600 mb-4">
+              Классический, аппаратный, комбинированный маникюр и педикюр с
+              использованием премиальных материалов
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 1200₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Макияж</h3>
+            <p class="text-gray-600 mb-4">
+              Дневной, вечерний, свадебный макияж от визажистов с международным
+              опытом
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 3000₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Брови и ресницы</h3>
+            <p class="text-gray-600 mb-4">
+              Коррекция и окрашивание бровей, ламинирование, наращивание ресниц
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 1000₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div
+            class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300"
+          >
+            <div class="text-amber-600 text-4xl mb-4">
+              <i class="fas fa-gem"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">SPA-программы</h3>
+            <p class="text-gray-600 mb-4">
+              Комплексные программы ухода за телом, обертывания, массажи и
+              ритуалы красоты
+            </p>
+            <div class="flex justify-between items-center">
+              <span class="text-amber-600 font-bold">От 5000₽</span>
+              <a
+                href="#booking"
+                class="text-amber-600 hover:text-amber-700 font-medium"
+                >Записаться →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+            <img
+              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+              alt="Салон красоты Lumiere"
+              class="rounded-lg shadow-xl w-full"
+            />
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-6">
+              О нашем салоне
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Lumière - это место, где встречаются роскошь, профессионализм и
+              индивидуальный подход к каждому гостю. Наш салон был основан в
+              2010 году с целью создания пространства, где каждая женщина сможет
+              почувствовать себя особенной.
+            </p>
+            <p class="text-gray-600 mb-6">
+              Мы используем только профессиональную косметику премиальных
+              брендов и самое современное оборудование. Наши мастера регулярно
+              проходят обучение у мировых экспертов индустрии красоты.
+            </p>
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="flex items-center">
+                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-award text-amber-600 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">10+ лет опыта</h4>
+                  <p class="text-gray-600 text-sm">Работаем с 2010 года</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-users text-amber-600 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">15 мастеров</h4>
+                  <p class="text-gray-600 text-sm">Профессионалы своего дела</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-smile text-amber-600 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">5000+ клиентов</h4>
+                  <p class="text-gray-600 text-sm">Довольных результатом</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                  <i class="fas fa-certificate text-amber-600 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800">Сертификаты</h4>
+                  <p class="text-gray-600 text-sm">Международного уровня</p>
+                </div>
+              </div>
+            </div>
+            <a
+              href="#masters"
+              class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full transition duration-300"
+              >Наши мастера</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Masters Section -->
+    <section id="masters" class="py-20 bg-amber-50">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
+            Наши мастера
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Профессионалы с многолетним опытом, которые сделают вас еще красивее
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Master 1 -->
+          <div
+            class="master-card bg-white rounded-lg overflow-hidden shadow-md relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
+              alt="Анна - стилист"
+              class="w-full h-80 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Анна</h3>
+              <p class="text-amber-600 mb-4">Топ-стилист</p>
+              <p class="text-gray-600 text-sm">
+                Специализация: сложное окрашивание, кератин, укладки
+              </p>
+            </div>
+            <div
+              class="master-social absolute left-0 right-0 flex justify-center space-x-4"
+            >
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-vk"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Master 2 -->
+          <div
+            class="master-card bg-white rounded-lg overflow-hidden shadow-md relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+              alt="Елена - визажист"
+              class="w-full h-80 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Елена</h3>
+              <p class="text-amber-600 mb-4">Визажист</p>
+              <p class="text-gray-600 text-sm">
+                Специализация: свадебный макияж, вечерний макияж
+              </p>
+            </div>
+            <div
+              class="master-social absolute left-0 right-0 flex justify-center space-x-4"
+            >
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-vk"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Master 3 -->
+          <div
+            class="master-card bg-white rounded-lg overflow-hidden shadow-md relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+              alt="Ольга - косметолог"
+              class="w-full h-80 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Ольга</h3>
+              <p class="text-amber-600 mb-4">Косметолог</p>
+              <p class="text-gray-600 text-sm">
+                Специализация: уходовые процедуры, пилинги, массажи
+              </p>
+            </div>
+            <div
+              class="master-social absolute left-0 right-0 flex justify-center space-x-4"
+            >
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-vk"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Master 4 -->
+          <div
+            class="master-card bg-white rounded-lg overflow-hidden shadow-md relative"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+              alt="Ирина - мастер маникюра"
+              class="w-full h-80 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-1">Ирина</h3>
+              <p class="text-amber-600 mb-4">Мастер маникюра</p>
+              <p class="text-gray-600 text-sm">
+                Специализация: аппаратный маникюр, дизайн ногтей
+              </p>
+            </div>
+            <div
+              class="master-social absolute left-0 right-0 flex justify-center space-x-4"
+            >
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition duration-300"
+                ><i class="fab fa-vk"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-4">
+            Отзывы наших клиентов
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Что говорят о нас те, кто уже посетил наш салон
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Клиент"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Марина</h4>
+                <div class="flex text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Очень довольна результатом окрашивания у Анны! Цвет получился
+              именно таким, как я хотела. Мастер настоящий профессионал, уделила
+              внимание всем деталям. Обязательно вернусь снова!"
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                alt="Клиент"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Анна</h4>
+                <div class="flex text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Делала свадебный макияж у Елены - это было просто волшебство! Я
+              выглядела естественно и в то же время празднично. Макияж держался
+              весь день, несмотря на слезы радости. Спасибо огромное!"
+            </p>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card bg-white p-8 rounded-lg">
+            <div class="flex items-center mb-4">
+              <img
+                src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=699&q=80"
+                alt="Клиент"
+                class="w-12 h-12 rounded-full object-cover mr-4"
+              />
+              <div>
+                <h4 class="font-bold">Екатерина</h4>
+                <div class="flex text-amber-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+            <p class="text-gray-600">
+              "Регулярно посещаю косметолога Ольгу уже больше года. Кожа лица
+              значительно улучшилась, уменьшились морщинки. Процедуры
+              безболезненные, а атмосфера в салоне очень приятная. Рекомендую!"
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-amber-600 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Записаться на прием
+            </h2>
+            <p class="text-amber-100 max-w-2xl mx-auto">
+              Оставьте свои данные, и мы свяжемся с вами для подтверждения
+              записи
+            </p>
+          </div>
+
+          <form class="booking-form grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block mb-2">Ваше имя</label>
+              <input
+                type="text"
+                id="name"
+                class="w-full bg-transparent py-2 focus:outline-none placeholder-amber-200"
+                placeholder="Имя"
+                required
+              />
+            </div>
+            <div>
+              <label for="phone" class="block mb-2">Телефон</label>
+              <input
+                type="tel"
+                id="phone"
+                class="w-full bg-transparent py-2 focus:outline-none placeholder-amber-200"
+                placeholder="+7 (___) ___-__-__"
+                required
+              />
+            </div>
+            <div>
+              <label for="service" class="block mb-2">Услуга</label>
+              <select
+                id="service"
+                class="w-full bg-transparent py-2 focus:outline-none border-b border-amber-400"
+              >
+                <option value="" disabled selected>Выберите услугу</option>
+                <option value="haircut">Стрижка</option>
+                <option value="coloring">Окрашивание</option>
+                <option value="manicure">Маникюр</option>
+                <option value="makeup">Макияж</option>
+                <option value="cosmetology">Косметология</option>
+                <option value="spa">SPA-процедуры</option>
+              </select>
+            </div>
+            <div>
+              <label for="master" class="block mb-2"
+                >Мастер (необязательно)</label
+              >
+              <select
+                id="master"
+                class="w-full bg-transparent py-2 focus:outline-none border-b border-amber-400"
+              >
+                <option value="" selected>Любой мастер</option>
+                <option value="anna">Анна (стилист)</option>
+                <option value="elena">Елена (визажист)</option>
+                <option value="olga">Ольга (косметолог)</option>
+                <option value="irina">Ирина (маникюр)</option>
+              </select>
+            </div>
+            <div>
+              <label for="date" class="block mb-2">Дата</label>
+              <input
+                type="date"
+                id="date"
+                class="w-full bg-transparent py-2 focus:outline-none border-b border-amber-400"
+                required
+              />
+            </div>
+            <div>
+              <label for="time" class="block mb-2">Время</label>
+              <input
+                type="time"
+                id="time"
+                class="w-full bg-transparent py-2 focus:outline-none border-b border-amber-400"
+                required
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label for="message" class="block mb-2"
+                >Дополнительная информация</label
+              >
+              <textarea
+                id="message"
+                rows="3"
+                class="w-full bg-transparent py-2 focus:outline-none border-b border-amber-400 placeholder-amber-200"
+                placeholder="Ваши пожелания"
+              ></textarea>
+            </div>
+            <div class="md:col-span-2 text-center">
+              <button
+                type="submit"
+                class="bg-white text-amber-600 hover:bg-amber-50 px-8 py-3 rounded-full font-medium transition duration-300"
+              >
+                Отправить заявку
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row">
+          <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-amber-800 mb-6">
+              Контакты
+            </h2>
+            <p class="text-gray-600 mb-8">
+              Мы находимся в центре города, в уютном и тихом месте. Приходите к
+              нам за красотой и хорошим настроением!
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="text-amber-600 text-xl mr-4 mt-1">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 mb-1">Адрес</h4>
+                  <p class="text-gray-600">г. Москва, ул. Тверская, д. 18</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="text-amber-600 text-xl mr-4 mt-1">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 mb-1">Телефон</h4>
+                  <p class="text-gray-600">+7 (495) 123-45-67</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="text-amber-600 text-xl mr-4 mt-1">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                  <p class="text-gray-600">info@lumiere-beauty.ru</p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="text-amber-600 text-xl mr-4 mt-1">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-800 mb-1">Часы работы</h4>
+                  <p class="text-gray-600">
+                    Пн-Пт: 9:00 - 21:00<br />Сб-Вс: 10:00 - 20:00
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8">
+              <h4 class="font-bold text-gray-800 mb-4">Мы в соцсетях</h4>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="bg-amber-100 text-amber-600 hover:bg-amber-200 p-3 rounded-full transition duration-300"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="#"
+                  class="bg-amber-100 text-amber-600 hover:bg-amber-200 p-3 rounded-full transition duration-300"
+                  ><i class="fab fa-vk"></i
+                ></a>
+                <a
+                  href="#"
+                  class="bg-amber-100 text-amber-600 hover:bg-amber-200 p-3 rounded-full transition duration-300"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a
+                  href="#"
+                  class="bg-amber-100 text-amber-600 hover:bg-amber-200 p-3 rounded-full transition duration-300"
+                  ><i class="fab fa-telegram-plane"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <div class="bg-gray-100 rounded-lg overflow-hidden h-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.373787881729!2d37.610244315930896!3d55.75169998055308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a5a738fa419%3A0x7c347d506f52311f!2z0KLQstC10YDQtNGW0L3QsNGPINGD0LsuLCAxOCwg0JzQvtGB0LrQstCwLCAxMjMwMDI!5e0!3m2!1sru!2sru!4v1623750000000!5m2!1sru!2sru"
+                width="100%"
+                height="100%"
+                style="min-height: 400px"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-800 text-white py-10">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="text-2xl font-bold text-white"
+              >Lumi<span class="text-amber-200">ère</span></a
+            >
+            <p class="text-amber-200 mt-2">Салон красоты премиум класса</p>
+          </div>
+
+          <div class="flex flex-col items-center md:items-end">
+            <p class="mb-4">© 2023 Lumiere Beauty Salon. Все права защищены.</p>
+            <div class="flex space-x-4">
+              <a href="#" class="hover:text-amber-200 transition duration-300"
+                >Политика конфиденциальности</a
+              >
+              <a href="#" class="hover:text-amber-200 transition duration-300"
+                >Условия использования</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 bg-amber-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth Scrolling for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Close mobile menu if open
+            mobileMenu.classList.add("hidden");
+
+            // Scroll to target
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Form Submission
+      const bookingForm = document.querySelector(".booking-form");
+
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          // Here you would normally send the form data to the server
+          // For this example, we'll just show an alert
+          alert(
+            "Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время для подтверждения записи."
+          );
+
+          // Reset form
+          bookingForm.reset();
+        });
+      }
+
+      // Phone Input Mask
+      const phoneInput = document.getElementById("phone");
+
+      if (phoneInput) {
+        phoneInput.addEventListener("input", (e) => {
+          const x = e.target.value
+            .replace(/\D/g, "")
+            .match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+          e.target.value = !x[2]
+            ? x[1]
+            : "+7 (" +
+              x[2] +
+              (x[3] ? ") " + x[3] : "") +
+              (x[4] ? "-" + x[4] : "") +
+              (x[5] ? "-" + x[5] : "");
+        });
+      }
+    </script>
+  </body>
+</html>
